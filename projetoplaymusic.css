@@ -1,0 +1,136 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+}
+body{
+    background-color: #191C55;
+}
+
+body * {
+    font-family: 'roboto', sans-serif;
+}
+
+#app * {
+  /* border: 1px solid #D7D9FF;  */ 
+  
+}
+
+#app{
+    display: grid;
+    grid-template-areas: 'A B' 'A C';
+    /* max-content é usado para ficar do tamanho máximo do conteúdo colocado na grid columns */
+    grid-template-columns: max-content max-content;
+    gap: 32px;
+
+    /* place-content center é utilizado para centralizar */
+    place-content: center;
+    /* podemos utilizar o place-content center + o height para centralizar a nossa grid*/
+    height: 100vh;
+}
+
+
+
+#player1{
+    grid-area: A;
+    padding: 3.125em 1.875em;
+    
+}
+#player1 img {
+    width: 11.875em;
+    height: 11.875em;
+    object-fit: cover;
+}
+
+#player1 .info{
+    margin-top: 1.75em;
+}
+
+#player1 .wrapper, .info{
+    width: 11.875em;
+}
+/* Player 2 */
+#player2{
+    grid-area: B;
+}
+
+/* Player 3*/
+#player3{
+    grid-area: C;
+}
+
+/* Observação: mesmo que eu tenha colocado um padding de 1.75em na classe player que tem em todas as divs, devemos lembrar que o que vai valer não é a questão do ultimo parâmetro e valor que foi colado, porque isso só funciona quando os dois tem a mesma hierarquia, e nesse caso o ID player1 que colocamos acima tem uma prioridade maior em cima da classe .player que usamos para definir o padding do player2 e player3*/
+
+.player{
+    background-color: #6B6EAA;
+    padding: 1.75em;
+    border-radius: 0.625em;
+
+}
+
+.info {
+    color: #E1E1E6;
+    
+     
+}
+.info h1 {
+    font-size: 24px;
+    color: #E1E1E6;
+}
+
+.info p{
+    opacity: 0.67;
+    font-size: 19px;
+
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.75em;
+    filter: drop-shadow(1px 1px 1px white);
+}
+
+.track {
+
+    position: relative;
+
+}
+
+.track::before {
+    content: '';
+    height: 0.375em;
+    width: 100%;
+    display: block;
+    background-color: #D9D9D9;
+    opacity: 0.3;
+    border-radius: 0.625em;
+
+    position: absolute;
+}
+
+.track::after{
+    content: '';
+    height:0.375em ;
+    width: 80%;
+    display: block;
+    background-color: #D9D9D9;
+    border-radius: 0.625em;
+
+
+}
+
+.time {
+    font-size: 0.875em;
+    color: #c4c4cc;
+    opacity: 0.6;
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.6em;
+}
+
+
