@@ -1,12 +1,12 @@
 @charset "UTF-8";
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; 
 }
-body{
+body {
     background-color: #191C55;
 }
 
@@ -19,13 +19,14 @@ body * {
   
 }
 
-#app{
+#app {
     display: grid;
-    grid-template-areas: 'A B' 'A C';
     /* max-content é usado para ficar do tamanho máximo do conteúdo colocado na grid columns */
     grid-template-columns: max-content max-content;
+    grid-template-areas: 
+    'A B' 
+    'A C';
     gap: 32px;
-
     /* place-content center é utilizado para centralizar */
     place-content: center;
     /* podemos utilizar o place-content center + o height para centralizar a nossa grid*/
@@ -34,33 +35,39 @@ body * {
 
 
 
-#player1{
+#player-1{
     grid-area: A;
     padding: 3.125em 1.875em;
     
 }
-#player1 img {
+
+#player-1 .wrapper{
+    width: 11.875em;
+}
+
+#player-1 img {
     width: 11.875em;
     height: 11.875em;
     object-fit: cover;
+    border-radius: 0.375em;
 }
 
-#player1 .info{
+#player-1 .info{
     margin-top: 1.75em;
 }
 
-#player1 .wrapper, .info{
-    width: 11.875em;
-}
+
 /* Player 2 */
-#player2{
+
+#player-2{
     grid-area: B;
+    height: fit-content;
 }
 
 /* Player 3*/
-#player3{
+/*#player-3{
     grid-area: C;
-}
+}*/
 
 /* Observação: mesmo que eu tenha colocado um padding de 1.75em na classe player que tem em todas as divs, devemos lembrar que o que vai valer não é a questão do ultimo parâmetro e valor que foi colado, porque isso só funciona quando os dois tem a mesma hierarquia, e nesse caso o ID player1 que colocamos acima tem uma prioridade maior em cima da classe .player que usamos para definir o padding do player2 e player3*/
 
@@ -71,14 +78,26 @@ body * {
 
 }
 
+.player img {
+    width: 5.25em;
+    height: 5.25em;
+    object-fit: cover;
+    border-radius: 0.375em;
+}
+
+.info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.75em;
+    
+}
+
 .info {
     color: #E1E1E6;
-    
-     
 }
 .info h1 {
     font-size: 24px;
-    color: #E1E1E6;
+    margin-bottom: 0.6em;
 }
 
 .info p{
@@ -94,8 +113,12 @@ body * {
     filter: drop-shadow(1px 1px 1px white);
 }
 
-.track {
+.horizontal .controls {
+    padding-inline: 58px;
+}
 
+.track {
+    margin-top: 1.75em;
     position: relative;
 
 }
@@ -110,15 +133,17 @@ body * {
     border-radius: 0.625em;
 
     position: absolute;
+    
 }
 
 .track::after{
     content: '';
-    height:0.375em ;
+    height:0.375em;
     width: 80%;
     display: block;
     background-color: #D9D9D9;
     border-radius: 0.625em;
+  
 
 
 }
@@ -133,4 +158,34 @@ body * {
     margin-top: 0.6em;
 }
 
+@media (max-width: 670px) {
+    #app{
+        display: flex;
+        flex-direction: column;
+
+        max-width: 270px;
+        margin: auto;
+        height: auto;
+
+        padding-block: 60px;
+    }
+
+    .horizontal .controls{
+        padding-inline: 30px;
+    }
+
+    .info {
+        color: #E1E1E6;
+    }
+    .info h1 {
+        font-size: 18px;
+        margin-bottom: 0.6em;
+    }
+    
+    .info p{
+        opacity: 0.67;
+        font-size: 19px;
+    
+    }
+}
 
